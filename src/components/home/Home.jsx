@@ -1,11 +1,12 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { strong, optionsFull } from "../config/config";
 import rightArrow from "../../assets/rightArrow.png";
 import copyIcon from "../../assets/copyIcon.png";
 import Swal from "sweetalert2";
 import "./style.css";
-import { generateRandomLetter, copy } from "../../helper/helper";
+import { generateRandomLetter, copy, colorDecider,checkBoxesDecider } from "../../helper/helper";
 import Checkboxes from "../checkboxes/Checkboxes";
+import Strength from "../strength/Strength";
 const Home = () => {
   const [characters, setCharacters] = useState(4);
   const [password, setPassword] = useState([]);
@@ -27,7 +28,8 @@ const Home = () => {
     setIsChecked(!isChecked);
   };
 
-  const handleClick = () => {
+  const handleClick = (e) => {
+    console.log(e)
     if (alphabetChanged.length > 0) {
       let pass = [];
       for (let i = 0; i < characters; i++) {
@@ -46,6 +48,12 @@ const Home = () => {
       });
     }
   };
+
+  const inputChange = (e) => {
+    console.log(e.target.value)
+  }
+
+  useEffect(() => {}, [characters]);
 
   return (
     <>
@@ -89,8 +97,12 @@ const Home = () => {
             <div className=" bg-stone-900 p-3 flex justify-between items-center">
               <h3 className="uppercase text-gray-500 text-xs">strength</h3>{" "}
               <div className="flex">
-                {strong.map((item, index) => (
-                  <p className={`${characters<6?"text-red-500":characters>6?"text-green-400":characters===6?"text-yellow-400":"text-yellow-400"}`}key={index}>{item}</p>
+                {checkBoxesDecider(characters,strong).map((item, index) => (
+                  <Strength
+                    classColor={colorDecider(characters)}
+                    key={index}
+                    item={item}
+                  />
                 ))}
               </div>
             </div>
