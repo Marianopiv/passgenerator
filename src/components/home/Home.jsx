@@ -57,7 +57,7 @@ const Home = () => {
 
   return (
     <>
-      <div className="bg-blue-900 flex justify-center h-screen text-white items-center">
+      <div className="bg-black flex justify-center h-screen text-white items-center">
         <div className="flex flex-col gap-3">
           <h1 className="text-center text-gray-500"> Password Generator</h1>
           <div className="flex mb-3 items-center justify-between px-2 py-0 bg-stone-800">

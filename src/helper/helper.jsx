@@ -17,16 +17,16 @@ export const copy = (password) => {
 };
 
 export const colorDecider = (characters) => {
-  return characters < 6
+  return characters < 8
     ? "text-red-500"
-    : characters >= 6 && characters < 10
+    : characters >= 8 && characters < 11
     ? "text-yellow-400"
     : "text-green-500";
 };
 export const checkBoxesDecider = (characters, array) => {
-  return characters < 6
+  return characters < 8
     ? array.slice(0, 1)
-    : characters >= 6 && characters < 10
+    : characters >= 8 && characters < 11
     ? array.slice(0, 2)
     : array;
 };
