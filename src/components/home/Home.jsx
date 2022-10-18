@@ -4,7 +4,12 @@ import rightArrow from "../../assets/rightArrow.png";
 import copyIcon from "../../assets/copyIcon.png";
 import Swal from "sweetalert2";
 import "./style.css";
-import { generateRandomLetter, copy, colorDecider,checkBoxesDecider } from "../../helper/helper";
+import {
+  generateRandomLetter,
+  copy,
+  colorDecider,
+  checkBoxesDecider,
+} from "../../helper/helper";
 import Checkboxes from "../checkboxes/Checkboxes";
 import Strength from "../strength/Strength";
 const Home = () => {
@@ -28,8 +33,7 @@ const Home = () => {
     setIsChecked(!isChecked);
   };
 
-  const handleClick = (e) => {
-    console.log(e)
+  const handleClick = () => {
     if (alphabetChanged.length > 0) {
       let pass = [];
       for (let i = 0; i < characters; i++) {
@@ -48,10 +52,6 @@ const Home = () => {
       });
     }
   };
-
-  const inputChange = (e) => {
-    console.log(e.target.value)
-  }
 
   useEffect(() => {}, [characters]);
 
@@ -97,7 +97,7 @@ const Home = () => {
             <div className=" bg-stone-900 p-3 flex justify-between items-center">
               <h3 className="uppercase text-gray-500 text-xs">strength</h3>{" "}
               <div className="flex">
-                {checkBoxesDecider(characters,strong).map((item, index) => (
+                {checkBoxesDecider(characters, strong).map((item, index) => (
                   <Strength
                     classColor={colorDecider(characters)}
                     key={index}
