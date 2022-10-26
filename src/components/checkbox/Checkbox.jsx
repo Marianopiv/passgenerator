@@ -1,16 +1,15 @@
 import React from "react";
 
-const Checkboxes = ({ isChecked, handleChange, item, index }) => {
+const Checkbox = ({handleChange, item}) => {
   return (
-    <div key={index} className="flex gap-4 main">
+    <div  className="flex gap-4 main">
       <input
         onClick={(e) => handleChange(e, item)}
         type="checkbox"
-        value={isChecked}
       ></input>
       <label className="text-xs">{item.name}</label>
     </div>
   );
 };
 
-export default Checkboxes;
+export default Checkbox;

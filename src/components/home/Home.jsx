@@ -10,27 +10,22 @@ import {
   colorDecider,
   checkBoxesDecider,
 } from "../../helper/helper";
-import Checkboxes from "../checkboxes/Checkboxes";
 import Strength from "../strength/Strength";
+import Checkbox from "../checkbox/Checkbox";
 const Home = () => {
   const [characters, setCharacters] = useState(4);
   const [password, setPassword] = useState([]);
   const [alphabetChanged, setAlphabetChanged] = useState([]);
-  const [isChecked, setIsChecked] = useState(false);
 
-  const handleToogle = (selected) => {
-    return setAlphabetChanged([...alphabetChanged, selected]);
-  };
 
   const handleChange = (event, selected) => {
     if (event.target.checked) {
-      handleToogle(selected);
+      setAlphabetChanged([...alphabetChanged, selected])
     } else {
       setAlphabetChanged(
         alphabetChanged.filter((item) => !selected.name.includes(item.name))
       );
     }
-    setIsChecked(!isChecked);
   };
 
   const handleClick = () => {
@@ -81,13 +76,14 @@ const Home = () => {
               min={4}
               max={16}
               type="range"
+              value={characters}
               name=""
               id=""
               onChange={(e) => setCharacters(e.target.value)}
             />
             <div className="flex flex-col gap-3">
               {optionsFull.map((item, index) => (
-                <Checkboxes
+                <Checkbox
                   key={index}
                   item={item}
                   handleChange={handleChange}
@@ -106,8 +102,8 @@ const Home = () => {
                 ))}
               </div>
             </div>
-            <div className="flex justify-center items-center gap-2   py-3 font-semibold text-black text-xs bg-green-1000">
-              <button className="uppercase text-gray-600" onClick={handleClick}>
+            <div onClick={handleClick} className="flex justify-center items-center gap-2 hover:cursor-pointer  py-3 font-semibold text-black text-xs bg-green-1000">
+              <button className="uppercase text-gray-600" >
                 Generate{" "}
               </button>
               <img className="w-2 h-2" src={rightArrow} alt="" />
