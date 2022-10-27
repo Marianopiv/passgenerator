@@ -68,7 +68,7 @@ const Home = () => {
           </div>
           <div className="bg-stone-800 flex flex-col gap-5 px-4 w-64 py-4">
             <div className="flex justify-between items-center">
-              <h3 className="text-xs">Character Length</h3>
+              <h3 className="text-xs ">Character Length</h3>
               <h3 className="text-green-1000">{characters}</h3>
             </div>
             <input
